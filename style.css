@@ -1,0 +1,274 @@
+body{
+    background: rgb(145, 141, 141);
+    font-family: 'JetBrains Mono', monospace;
+    color: #fff;
+}
+header{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 90px;
+    width: 100%;
+    background: rgb(29, 29, 31);
+    grid-template-areas:"logo welcome profil logout";
+    cursor: pointer;
+    font-size: 25px;
+    text-align: center;
+    border: 1px solid white;
+}
+.logout:hover,.logo:hover,.profil:hover{
+    font-size: 27px;
+}
+.logout{
+    transition: 0.2s ease-in-out;
+    grid-area: logout;
+}
+.logo{
+    grid-area: logo;
+    font-weight: 600;
+    transition: 0.2s ease-in-out;
+    font-family: 'Pacifico', cursive;
+}
+.profil{
+    transition: 0.2s ease-in-out;
+    grid-area: profil;
+}
+.welcome{
+    grid-area: welcome;
+    cursor: default;
+}
+.container-3{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(5, minmax(0px, 110px));
+    width: 50%;
+    text-align: center;
+    font-size: 22px;
+    border: 1px double white;
+    margin:50px auto 0px auto;
+    background: rgb(29, 29, 31);
+    box-shadow: 0px 0px 20px 10px rgba(201,201,201,0.9);
+    padding: 10px;
+    grid-template-areas:
+    "name-1 name-2"
+    "last-name-1 last-name-2"
+    "email-1 email-2"
+    "phone-1 phone-2"
+    "position-1 position-2";
+}
+.name-1{
+    grid-area: name-1;
+}
+.name-2{
+    grid-area: name-2;
+}
+.last-name-1{
+    grid-area: last-name-1;
+}
+.last-name-2{
+    grid-area: last-name-2;
+}
+.phone-1{
+    grid-area: phone-1;
+}
+.phone-2{
+    grid-area: phone-2;
+}
+.email-1{
+    grid-area: email-1;
+}
+.email-2{
+    grid-area: email-2;
+}
+.position-1{
+    grid-area: position-1;
+}
+.position-2{
+    grid-area: position-2;
+}
+.container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, minmax(50px,100px));
+    margin:50px auto 0px auto;
+    width: 100%;
+    background: rgb(29, 29, 31);
+    box-shadow: 0px 0px 20px 10px rgba(201,201,201,0.9);
+    grid-template-areas: 
+    "name name name"
+    "login username username"
+    "password userpassword userpassword"
+    "register register log-in"
+    "error error error";
+    text-align: center;
+}
+input{
+    font-family: 'JetBrains Mono', monospace;
+}
+.error{
+    grid-area: error;
+    color: rgb(255, 0, 0);
+    margin-bottom: 50px;
+}
+.name{
+    grid-area: name;
+    font-family: 'Pacifico', cursive;
+    font-size: 60px;
+}
+.login{
+    grid-area: login;
+}
+.username{
+    grid-area: username;
+    width: 85%;
+    margin-top: 20px;
+    height: 30px;
+    font-size: 20px;
+}
+.password{
+    grid-area: password;
+}
+.userpassword{
+    grid-area: userpassword;
+    width: 85%;
+    margin-top: 20px;
+    height: 30px;
+    font-size: 20px;
+}
+.register{
+    grid-area: register;
+    width: 80%;
+    margin:0px auto 0px auto;
+    height: 45px;
+    font-size: 25px;
+    transition: 0.2s ease-in-out;
+    background-color: rgb(180, 180, 180);
+}
+.register:hover{
+    font-size: 30px;
+    background-color: rgb(245, 151, 151);
+    transform: translateY(-2px);
+    font-weight: 600;
+}
+.log-in{
+    grid-area: log-in;
+    width: 80%;
+    margin:0px auto 0px auto;
+    height: 45px;
+    font-size: 25px;
+    transition: 0.2s ease-in-out;
+    background-color: rgb(180, 180, 180);
+}
+.log-in:hover{
+    font-size: 30px;
+    background-color: rgb(159, 245, 151);
+    transform: translateY(-2px);
+    font-weight: 600;
+}
+label{
+    font-size: 25px;
+    margin-top: 20px;
+}
+.container-register{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(5, minmax(0px,110px));
+    width: 100%;
+    font-size: 12px;
+    margin:50px auto 0px auto;
+    background: rgb(29, 29, 31);
+    box-shadow: 0px 0px 20px 10px rgba(201,201,201,0.9);
+    text-align: center;
+    grid-template-areas: 
+    "namelogo namelogo"
+    "name1 lastname"
+    "login password"
+    "email phone"
+    "position create";
+}
+.register-place{
+    height: 25%;
+    margin: auto;
+}
+.name-logo{
+    grid-area: namelogo;
+    font-family: 'Pacifico', cursive;
+    font-size: 60px;
+    margin: auto;
+}
+.register-name{
+    grid-area: name1;
+}
+.register-last-name{
+    grid-area: lastname;
+}
+.register-login{
+    grid-area: login;
+}
+.register-password{
+    grid-area: password;
+}
+.register-email{
+    grid-area: email;
+}
+.register-phone{
+    grid-area: phone;
+}
+.register-position{
+    grid-area: position;
+}
+.register-create{
+    grid-area: create;
+    height: 40%;
+    width: 50%;
+    font-size: large;
+    transition: 0.2s ease-in-out;
+}
+.register-create:hover{
+    background-color: rgb(159, 245, 151);
+    transform: translateY(-2px);
+}
+.register-error{
+    color:red;
+}
+.e_create{
+    color: red;
+    width: 50%;
+    margin: 0px auto 0px auto;
+    background: rgb(29, 29, 31);
+    box-shadow: 0px 0px 20px 10px rgba(201,201,201,0.9);
+    text-align: center;
+    padding: 5px;
+}
+.register-success
+{
+   color: green;
+}
+.container-2{
+    width: 50%;
+    margin:20px auto 0px auto;
+    background: rgb(29, 29, 31);
+    box-shadow: 0px 0px 20px 10px rgba(201,201,201,0.9);
+    padding:10px;
+}
+table{
+    border-collapse: collapse;
+    border: 1px solid white;
+}
+td
+{
+    border: 1px solid white;
+    padding: 10px;
+}
+th
+{
+    border: 1px solid white;
+    padding: 10px;
+}
+@media (min-width: 600px){
+.container{
+    width: 600px;
+}
+.container-register{
+    width: 600px;
+}
+}
