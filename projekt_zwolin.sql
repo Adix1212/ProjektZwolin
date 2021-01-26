@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 14 Sty 2021, 09:34
+-- Czas generowania: 26 Sty 2021, 15:46
 -- Wersja serwera: 10.4.11-MariaDB
 -- Wersja PHP: 7.4.5
 
@@ -55,7 +55,7 @@ INSERT INTO `employees` (`id`, `name`, `last_name`, `phone`, `admin`, `reward`, 
 CREATE TABLE `login` (
   `id` int(11) NOT NULL,
   `login` varchar(45) NOT NULL,
-  `password` varchar(45) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `email` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -64,11 +64,12 @@ CREATE TABLE `login` (
 --
 
 INSERT INTO `login` (`id`, `login`, `password`, `email`) VALUES
-(1, 'adix12', 'Haslo123', 'adix12@gmail.com'),
-(2, 'Mati123', 'Haslo123', 'mati1223@gmail.com'),
-(3, 'dawid321', 'Haslo123', 'dawid321@gmail.com'),
-(4, 'Dominik420', 'Haslo123', 'dobryskun420@gmail.com'),
-(5, 'norberGierczak2021', 'Haslo123', 'jdstoprocent@gmail.com');
+(1, 'adix12', '$2y$10$FeVwqJOGX18ZjNPwN6kLcOtOU7Hie7JyZwR5UpBHSX8WbpzkZ7/Cu', 'adix12@gmail.com'),
+(2, 'Mati123', '$2y$10$FeVwqJOGX18ZjNPwN6kLcOtOU7Hie7JyZwR5UpBHSX8WbpzkZ7/Cu', 'mati1223@gmail.com'),
+(3, 'dawid321', '$2y$10$FeVwqJOGX18ZjNPwN6kLcOtOU7Hie7JyZwR5UpBHSX8WbpzkZ7/Cu', 'dawid321@gmail.com'),
+(4, 'Dominik420', '$2y$10$FeVwqJOGX18ZjNPwN6kLcOtOU7Hie7JyZwR5UpBHSX8WbpzkZ7/Cu', 'dobryskun420@gmail.com'),
+(15, 'amicek123', '$2y$10$/1Tc1oaOJVfwBCTOOsR2huQnrhXhPEmVX525ob9ICAhkAPrgZHWae', 'micek@poeta.pl'),
+(16, 'ASDdasdwq12', '$2y$10$rHo5ZgqRnzkC9CxWvwP1QecI20XKrKi9S0fnaQ7LzAq96fkurtr4u', 'aniklewicz1@interia.pl');
 
 -- --------------------------------------------------------
 
@@ -90,7 +91,7 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `name`, `number`, `info`, `userid`, `employeesid`) VALUES
-(1, 'Świadectwo', 100001, 'Świadectwo zdania szkoły FAŁSZYWE', 1, 9),
+(1, 'Świadectwo', 100001, 'Świadectwo zdania szkoły ', 1, 9),
 (2, 'Monitor', 100002, 'Monitor marki BENQ 144 hz eloo', 2, 9),
 (3, 'PS5', 100003, 'konstola marki sony do gier elooo', 1, 9);
 
@@ -138,7 +139,9 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `last_name`, `phone`, `position`, `loginid`) VALUES
 (1, 'Mateusz', 'Rolnik', '458526547', 'Kupujący', 2),
-(2, 'Dawid', 'Wariacik', '654987321', 'Sprzedawca', 3);
+(2, 'Dawid', 'Wariacik', '654987321', 'Sprzedawca', 3),
+(8, 'Adam', 'Mickiewicz', '696969123', 'Sprzedawca', 15),
+(9, 'Adrian', 'Niklewicz', '696145967', 'Sprzedawca', 16);
 
 --
 -- Indeksy dla zrzutów tabel
@@ -193,7 +196,7 @@ ALTER TABLE `employees`
 -- AUTO_INCREMENT dla tabeli `login`
 --
 ALTER TABLE `login`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT dla tabeli `orders`
@@ -211,7 +214,7 @@ ALTER TABLE `status`
 -- AUTO_INCREMENT dla tabeli `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Ograniczenia dla zrzutów tabel
