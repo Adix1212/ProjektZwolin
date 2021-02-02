@@ -220,7 +220,6 @@
             unset($_SESSION['e_reward']);
         }
     ?>
-    <!-- 
     <input type="text" placeholder="Imię" name="name" minlength="3" maxlength="45" class="create-employee-name create-employee-place" required>
     <input type="text" placeholder="Nazwisko" name="last_name" maxlength="45" minlength="3" class="create-employee-last-name create-employee-place" required>
     <input type="text" placeholder="Login" name="login" maxlength="45" minlength="3" class="create-employee-login create-employee-place" required>
@@ -235,7 +234,7 @@
         <option>Szef</option>
     </select>
     <input type="submit" class="create-employee-create create-employee-place" value="Stwórz">
-    -->
+<!-- 
     <input type="text" placeholder="Imię" name="name" class="create-employee-name create-employee-place">
     <input type="text" placeholder="Nazwisko" name="last_name" class="create-employee-last-name create-employee-place">
     <input type="text" placeholder="Login" name="login"  class="create-employee-login create-employee-place">
@@ -250,6 +249,7 @@
         <option>Szef</option>
     </select>
     <input type="submit" class="create-employee-create create-employee-place" value="Stwórz">
+-->
 </form>
 </div>
 </body>
