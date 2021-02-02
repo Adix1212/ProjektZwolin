@@ -46,6 +46,7 @@
                                 $_SESSION['phone']=$line2['phone'];
                                 $_SESSION['position']=$line2['position'];
                                 $result2->close();
+                                $_SESSION['user']=true;
                                 header('Location: magpack.php');
                             }
                             elseif($result3=$connect->query(sprintf("SELECT * FROM employees e INNER JOIN login l on(e.loginid=l.id) WHERE l.login='%s' OR l.email='%s'",
@@ -56,13 +57,15 @@
                                 if($user3>0)
                                 {
                                     $_SESSION['log_in']=true;
-                                    $line3=$result3->fetch_assoc();
-                                    $_SESSION['id']=$line3['id'];
+                                    $line3=$result3->fetch_array();
+                                    $_SESSION['id']=$line3[0];
                                     $_SESSION['name']=$line3['name'];
                                     $_SESSION['last_name']=$line3['last_name'];
                                     $_SESSION['phone']=$line3['phone'];
                                     $_SESSION['position']=$line3['position'];
+                                    $_SESSION['reward']=$line3['reward'];
                                     $result3->close();
+                                    $_SESSION['employees']=true;
                                     header('Location: magpack.php');
                                 }
                                 else

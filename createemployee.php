@@ -1,5 +1,16 @@
 <?php
     session_start();
+    if(!isset($_SESSION['log_in']))
+    {
+        header('Location: index.php');
+        exit();
+    }
+    if(!isset($_SESSION['create_employee']))
+    {
+        header('Location: index.php');
+        exit();  
+    }
+
     if(isset($_POST['login']))
     {
         $form=true;
@@ -11,7 +22,7 @@
         if(isset($_POST['position']))
         {
             $position=$_POST['position'];  
-        }      
+        }
                 $login=$_POST['login'];
                 if(ctype_alnum($login)==false)
                 {
@@ -72,7 +83,13 @@
         {
             $form=false;
             $_SESSION['e_phone']="Numer musi składać sie z 9 cyfr!";
-        }          
+        }
+        $reward=$_POST['reward'];
+        if(($reward>10000)||($reward<2250))
+        {
+            $form=false;
+            $_SESSION['e_reward']="Płaca musi mieścić się w zakresie od 2250 do 10000";
+        }    
                 require_once "dbconnect.php";
                 mysqli_report(MYSQLI_REPORT_STRICT);
                 try{
@@ -117,7 +134,7 @@
                                 }
                                 $loginid=mysqli_fetch_assoc($requset);
                                 $login_id=$loginid['id'];
-                                if($connect->query("INSERT INTO users VALUES (NULL,'$name','$last_name','$phone','$position','$login_id')"))
+                                if($connect->query("INSERT INTO employees VALUES (NULL,'$name','$last_name','$phone','$reward','$position','$login_id')"))
                                 {
                                     $_SESSION['register_success']="true";
                                     header('Location: index.php');
@@ -126,7 +143,6 @@
                                 {
                                     throw new Exception($connect->errno);
                                 }
-
                             }
                             else
                             {
@@ -158,59 +174,82 @@
 </head>
 <body>
 <form method="post" action="">
-<div class="container-register">
+<div class="container-create-employee">
     <div class="name-logo">
     <a>MagPack</a>
 </div>
     <?php
         if(isset($_SESSION['e_login']))
         {
-            echo '<div class="register-login register-error">'.$_SESSION['e_login'].'</div>';
+            echo '<div class="create-employee-login create-employee-error">'.$_SESSION['e_login'].'</div>';
             unset($_SESSION['e_login']);
         }
         if(isset($_SESSION['e_name']))
         {
-            echo '<div class="register-name register-error">'.$_SESSION['e_name'].'</div>';
+            echo '<div class="create-employee-name create-employee-error">'.$_SESSION['e_name'].'</div>';
             unset($_SESSION['e_name']);
         }
         if(isset($_SESSION['e_last_name']))
         {
-            echo '<div class="register-last-name register-error">'.$_SESSION['e_last_name'].'</div>';
+            echo '<div class="create-employee-last-name create-employee-error">'.$_SESSION['e_last_name'].'</div>';
             unset($_SESSION['e_last_name']);
         }
         if(isset($_SESSION['e_password']))
         {
-            echo '<div class="register-password register-error">'.$_SESSION['e_password'].'</div>';
+            echo '<div class="create-employee-password create-employee-error">'.$_SESSION['e_password'].'</div>';
             unset($_SESSION['e_password']);
         }
         if(isset($_SESSION['e_email']))
         {
-            echo '<div class="register-email register-error">'.$_SESSION['e_email'].'</div>';
+            echo '<div class="create-employee-email create-employee-error">'.$_SESSION['e_email'].'</div>';
             unset($_SESSION['e_email']);
         }
         if(isset($_SESSION['e_phone']))
         {
-            echo '<div class="register-phone register-error">'.$_SESSION['e_phone'].'</div>';
+            echo '<div class="create-employee-phone create-employee-error">'.$_SESSION['e_phone'].'</div>';
             unset($_SESSION['e_phone']);
         }
         if(isset($_SESSION['e_position']))
         {
-            echo '<div class="register-position register-error">'.$_SESSION['e_position'].'</div>';
+            echo '<div class="create-employee-position create-employee-error">'.$_SESSION['e_position'].'</div>';
             unset($_SESSION['e_position']);
         }
+        if(isset($_SESSION['e_reward']))
+        {
+            echo '<div class="create-employee-reward create-employee-error">'.$_SESSION['e_reward'].'</div>';
+            unset($_SESSION['e_reward']);
+        }
     ?>
-    <input type="text" placeholder="Imię" name="name" minlength="3" maxlength="45" class="register-name register-place" required>
-    <input type="text" placeholder="Nazwisko" name="last_name" maxlength="45" minlength="3" class="register-last-name register-place" required>
-    <input type="text" placeholder="Login" name="login" maxlength="45" minlength="3" class="register-login register-place" required>
-    <input type="password" placeholder="Hasło" name="password" maxlength="20" minlength="3" class="register-password register-place" required>
-    <input type="email" placeholder="E-mail" name="email" maxlength="45" minlength="5" class="register-email register-place" required>
-    <input type="tel" pattern="[0-9]{9}" placeholder="Numer teleofou" name="phone" class="register-phone register-place" required>
-    <select name="position" class="register-position register-place" required>
-        <option disabled selected>Wybierz Role!</option>
-        <option>Kupujący</option>
-        <option>Sprzedawca</option>
+    <!-- 
+    <input type="text" placeholder="Imię" name="name" minlength="3" maxlength="45" class="create-employee-name create-employee-place" required>
+    <input type="text" placeholder="Nazwisko" name="last_name" maxlength="45" minlength="3" class="create-employee-last-name create-employee-place" required>
+    <input type="text" placeholder="Login" name="login" maxlength="45" minlength="3" class="create-employee-login create-employee-place" required>
+    <input type="passwprd" placeholder="Hasło" name="password" maxlength="20" minlength="3" class="create-employee-password create-employee-place" required>
+    <input type="email" placeholder="E-mail" name="email" maxlength="45" minlength="5" class="create-employee-email create-employee-place" required>
+    <input type="tel" pattern="[0-9]{9}" placeholder="Numer teleofou" name="phone" class="create-employee-phone create-employee-place" required>
+    <input type="number" placeholder="Płaca" name="reward" min="2250" maxlength="10000" step="25" class="create-employee-reward create-employee-place" required>
+    <select name="position" class="create-employee-position create-employee-place" required>
+        <option disabled selected>Wybierz Pozycje!</option>
+        <option>Export</option>
+        <option>Import</option>
+        <option>Szef</option>
     </select>
-    <input type="submit" class="register-create register-place" value="Stwórz">
+    <input type="submit" class="create-employee-create create-employee-place" value="Stwórz">
+    -->
+    <input type="text" placeholder="Imię" name="name" class="create-employee-name create-employee-place">
+    <input type="text" placeholder="Nazwisko" name="last_name" class="create-employee-last-name create-employee-place">
+    <input type="text" placeholder="Login" name="login"  class="create-employee-login create-employee-place">
+    <input type="text" placeholder="Hasło" name="password"  class="create-employee-password create-employee-place">
+    <input type="text" placeholder="E-mail" name="email" class="create-employee-email create-employee-place">
+    <input type="tel" placeholder="Numer teleofou" name="phone" class="create-employee-phone create-employee-place">
+    <input type="number" placeholder="Płaca" name="reward"  class="create-employee-reward create-employee-place">
+    <select name="position" class="create-employee-position create-employee-place">
+        <option disabled selected>Wybierz Pozycje!</option>
+        <option>Export</option>
+        <option>Import</option>
+        <option>Szef</option>
+    </select>
+    <input type="submit" class="create-employee-create create-employee-place" value="Stwórz">
 </form>
 </div>
 </body>

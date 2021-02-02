@@ -26,7 +26,7 @@
     <a>MagPack</a>
 </div>
 <label class="login">Login :</label>
-<input class="username" name="login" type="text" value="" placeholder="E-mail">
+<input class="username" name="login" type="text" value="" placeholder="Login/E-mail">
 
 <label class="password">Hasło :</label>
 <input class="userpassword" name="password" type="password" placeholder="Hasło">

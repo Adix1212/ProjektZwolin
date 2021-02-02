@@ -244,7 +244,8 @@ label{
    color: green;
 }
 .container-2{
-    width: 50%;
+    width: 60%;
+    text-align: center;
     margin:20px auto 0px auto;
     background: rgb(29, 29, 31);
     box-shadow: 0px 0px 20px 10px rgba(201,201,201,0.9);
@@ -264,11 +265,81 @@ th
     border: 1px solid white;
     padding: 10px;
 }
+.container-create-employee{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(6, minmax(0px,110px));
+    width: 100%;
+    font-size: 12px;
+    margin:50px auto 0px auto;
+    background: rgb(29, 29, 31);
+    box-shadow: 0px 0px 20px 10px rgba(201,201,201,0.9);
+    text-align: center;
+    grid-template-areas: 
+    "namelogo namelogo"
+    "name1 lastname"
+    "login password"
+    "email phone"
+    "position reward"
+    "create create";
+}
+.create-employee-place{
+    height: 25%;
+    margin: auto;
+}
+.create-employee-logo{
+    grid-area: namelogo;
+    font-family: 'Pacifico', cursive;
+    font-size: 60px;
+    margin: auto;
+}
+.create-employee-name{
+    grid-area: name1;
+}
+.create-employee-last-name{
+    grid-area: lastname;
+}
+.create-employee-login{
+    grid-area: login;
+}
+.create-employee-password{
+    grid-area: password;
+}
+.create-employee-email{
+    grid-area: email;
+}
+.create-employee-phone{
+    grid-area: phone;
+}
+.create-employee-position{
+    grid-area: position;
+}
+.create-employee-reward{
+    grid-area: reward;
+}
+.create-employee-create{
+    grid-area: create;
+    height: 40%;
+    width: 50%;
+    font-size: large;
+    transition: 0.2s ease-in-out;
+}
+.create-employee-create:hover{
+    background-color: rgb(159, 245, 151);
+    transform: translateY(-2px);
+}
+.create-employee-error{
+    color:red;
+    padding: 5px;
+}
 @media (min-width: 600px){
 .container{
     width: 600px;
 }
 .container-register{
+    width: 600px;
+}
+.container-create-employee{
     width: 600px;
 }
 }

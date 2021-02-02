@@ -40,7 +40,12 @@
     <div class="email-2"><p><?php echo $_SESSION['email']?></p></div>
 
     <div class="position-1"><p>Rola:</p></div>
-    <div class="position-2"><p><?php echo $_SESSION['position']?></p></div>
+    <div class="position-2"><p><?php echo $_SESSION['position'];
+    if(isset($_SESSION['reward']))
+    {
+        echo " ".$_SESSION['reward']."zł";
+    }
+    ?></p></div>
 </div>
 </body>
 </html>
